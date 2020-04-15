@@ -33,6 +33,7 @@ export const hBarOptions = {
     height: 380,
     locales: [es],
     defaultLocale: "es",
+    fomtFamily: "Arial",
   },
   plotOptions: {
     bar: {
@@ -45,22 +46,26 @@ export const hBarOptions = {
     },
   },
   colors: [
-    "#33b2df",
-    "#546E7A",
-    "#d4526e",
-    "#13d8aa",
-    "#A5978B",
-    "#2b908f",
-    "#f9a3a4",
     "#90ee7e",
-    "#f48024",
+    "#f9a3a4",
     "#69d2e7",
+    "#f48024",
+    "#13d8aa",
+    "#e26d9e",
+    "#33b2df",
+    "#ff3300",
+    "#A5978B",
+    "#e5d814",
   ],
   dataLabels: {
     enabled: true,
     textAnchor: "start",
     style: {
-      colors: ["#fff"],
+      colors: ["#000"],
+      textAnchor: "middle",
+      fontSize: "13px",
+      fontFamily: "Helvetica, Arial, sans-serif",
+      fontWeight: "semi-bold",
     },
     formatter: function (val, opt) {
       return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val;
