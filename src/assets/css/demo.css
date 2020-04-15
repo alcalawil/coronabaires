@@ -82,7 +82,7 @@
 }
 
 .fixed-plugin {
-  position: absolute;
+  position: fixed;
   top: 180px;
   right: 0;
   width: 64px;
