@@ -88,7 +88,7 @@ export const hBarOptions = {
     floating: true,
   },
   subtitle: {
-    text: "Category Names as DataLabels inside bars",
+    text: "Casos por provincias en la fecha seleccionada",
     align: "center",
   },
   tooltip: {
