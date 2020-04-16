@@ -76,9 +76,54 @@ const Dashboard = () => {
         </Row>
         {/* Charts */}
         <Row>
-          <Col md={9}>
+          <Col md={6}>
             {dataHbar.data.length ? (
-              <LineChart labels={lineData.labels} data={lineData.data} />
+              <LineChart
+                labels={lineData.labels}
+                data={lineData.data.totalCases}
+                color="#15DAF4"
+                name="Casos"
+                title="Curva de casos acumulados"
+              />
+            ) : (
+              <h4>Data no disponible</h4>
+            )}
+          </Col>
+          <Col md={6}>
+            {dataHbar.data.length ? (
+              <LineChart
+                labels={lineData.labels}
+                data={lineData.data.totalDeaths}
+                color="#FF0043"
+                name="Muertes"
+                title="Curva de muertes acumuladas"
+              />
+            ) : (
+              <h4>Data no disponible</h4>
+            )}
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            {dataHbar.data.length ? (
+              <VBar
+                name="Casos"
+                labels={dataVBar.labels}
+                data={dataVBar.series.newCases}
+                color="#15DAF4"
+              />
+            ) : (
+              <h4>Data no disponible</h4>
+            )}
+          </Col>
+          <Col md={6}>
+            {dataHbar.data.length ? (
+              <VBar
+                name="Muertes"
+                labels={dataVBar.labels}
+                data={dataVBar.series.newDeaths}
+                color="#FF0043"
+              />
             ) : (
               <h4>Data no disponible</h4>
             )}
@@ -98,15 +143,7 @@ const Dashboard = () => {
             )}
           </Col>
         </Row>
-        <Row>
-          <Col md={9}>
-            {dataHbar.data.length ? (
-              <VBar labels={dataVBar.labels} series={dataVBar.series} />
-            ) : (
-              <h4>Data no disponible</h4>
-            )}
-          </Col>
-        </Row>
+        <Row></Row>
       </Grid>
       <DatePicker
         onChange={onDatePickerChange}

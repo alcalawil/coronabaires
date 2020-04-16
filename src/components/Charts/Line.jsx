@@ -2,10 +2,10 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 import { lineOptions } from "variables/chartOptions";
 
-const LineChart = ({ data, labels }) => {
+const LineChart = ({ data, labels, color, name, title }) => {
   const series = [
     {
-      name: "Casos acumulados",
+      name,
       data,
     },
   ];
@@ -13,6 +13,11 @@ const LineChart = ({ data, labels }) => {
   const options = {
     ...lineOptions,
     labels,
+    colors: color ? [color] : undefined,
+    title: {
+      text: title,
+      align: "left",
+    },
   };
 
   return (
@@ -21,7 +26,7 @@ const LineChart = ({ data, labels }) => {
         options={options}
         series={series}
         type="line"
-        height={350}
+        height={400}
       />
     </div>
   );

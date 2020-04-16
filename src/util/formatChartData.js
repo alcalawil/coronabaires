@@ -50,10 +50,15 @@ export const formatVBarData = (dailyStats, numberOfBars = 14) => {
 
 export const formatLineData = (dailyStats) => {
   const totalCases = _(dailyStats).map("total_infections").value();
+  const totalDeaths = _(dailyStats).map("total_deaths").value();
   const dates = _(Object.keys(dailyStats)).value();
-
+  console.log(dates);
+  console.log(totalCases);
   return {
     labels: dates,
-    data: totalCases,
+    data: {
+      totalCases,
+      totalDeaths,
+    },
   };
 };

@@ -118,10 +118,11 @@ export const vBarOptions = {
     locales: [es],
     defaultLocale: "es",
   },
+  colors: ["#15DAF4"], //#FF0043
   plotOptions: {
     bar: {
       horizontal: false,
-      columnWidth: "90%",
+      columnWidth: "60%",
       endingShape: "rounded",
     },
   },
@@ -161,6 +162,7 @@ export const lineOptions = {
     locales: [es],
     defaultLocale: "es",
   },
+  colors: ["#15DAF4"], //#FF0043
   annotations: {
     yaxis: [
       // {
@@ -196,12 +198,12 @@ export const lineOptions = {
       {
         x: new Date("20 Mar 2020").getTime(),
         strokeDashArray: 0,
-        borderColor: "#775DD0",
+        borderColor: "#82DA66",
         label: {
-          borderColor: "#775DD0",
+          borderColor: "#82DA66",
           style: {
             color: "#fff",
-            background: "#775DD0",
+            background: "#82DA66",
           },
           text: "Inicio de cuarentena",
         },
@@ -216,22 +218,22 @@ export const lineOptions = {
             color: "#fff",
             background: "#775DD0",
           },
-          text: "Acá no se terminó",
+          text: "Acá creiste que terminaba",
         },
       },
-      {
-        x: new Date("13 Abr 2020").getTime(),
-        strokeDashArray: 0,
-        borderColor: "#775DD0",
-        label: {
-          borderColor: "#775DD0",
-          style: {
-            color: "#fff",
-            background: "#775DD0",
-          },
-          text: "Acá tampoco :)",
-        },
-      },
+      // {
+      //   x: new Date("13 Abr 2020").getTime(),
+      //   strokeDashArray: 0,
+      //   borderColor: "#775DD0",
+      //   label: {
+      //     borderColor: "#775DD0",
+      //     style: {
+      //       color: "#fff",
+      //       background: "#775DD0",
+      //     },
+      //     text: "Acá tampoco :)",
+      //   },
+      // },
       // {
       //   x: new Date("20 Mar 2020").getTime(),
       //   x2: new Date("15 Mar 2020").getTime(),
@@ -290,7 +292,7 @@ export const lineOptions = {
   },
   grid: {
     padding: {
-      right: 30,
+      right: 20,
       left: 20,
     },
   },
