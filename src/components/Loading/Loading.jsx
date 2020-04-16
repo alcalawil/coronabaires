@@ -5,9 +5,7 @@ const Loading = () => {
     <div className="loading">
       <header className="loading-header">
         <img src={loadingImg} className="loading-logo" alt="logo" />
-        <p>
-          <b>Cargando datos</b>
-        </p>
+        <h3>Cargando datos</h3>
       </header>
     </div>
   );

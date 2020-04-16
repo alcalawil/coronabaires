@@ -40,7 +40,7 @@ const Admin = (props) => {
   const getRandomMessage = () => {
     return (
       <div>
-        <b>"Solo serán dos semanas de cuarentena"</b> Alberto Fernandez
+        <b>"Serán dos semanas de cuarentena"</b> Alberto Fernandez
       </div>
     );
   };
@@ -70,21 +70,6 @@ const Admin = (props) => {
     }
     return "Brand";
   };
-
-  // const componentDidUpdate = (e) => {
-  //   if (
-  //     window.innerWidth < 993 &&
-  //     e.history.location.pathname !== e.location.pathname &&
-  //     document.documentElement.className.indexOf("nav-open") !== -1
-  //   ) {
-  //     document.documentElement.classList.toggle("nav-open");
-  //   }
-  //   if (e.history.action === "PUSH") {
-  //     document.documentElement.scrollTop = 0;
-  //     document.scrollingElement.scrollTop = 0;
-  //     this.refs.mainPanel.scrollTop = 0;
-  //   }
-  // }
 
   return (
     <div className="wrapper">

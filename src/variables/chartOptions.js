@@ -93,7 +93,7 @@ export const hBarOptions = {
     floating: true,
   },
   subtitle: {
-    text: "Casos por provincias en la fecha seleccionada",
+    text: "Actualizado hasta la fecha seleccionada",
     align: "center",
   },
   tooltip: {
