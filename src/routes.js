@@ -10,7 +10,7 @@ import Upgrade from "views/Upgrade.jsx";
 const dashboardRoutes = [
   {
     path: "/",
-    name: "Argentina",
+    name: "Estadísticas",
     icon: "pe-7s-graph",
     component: Dashboard,
     layout: "",

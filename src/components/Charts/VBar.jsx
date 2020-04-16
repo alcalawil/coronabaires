@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactApexChart from "react-apexcharts";
 import { vBarOptions } from "variables/chartOptions";
 
-const VBar = ({ labels, data, name, color }) => {
+const VBar = ({ labels, data, name, title, color }) => {
   const _series = [
     {
       name,
@@ -13,6 +13,10 @@ const VBar = ({ labels, data, name, color }) => {
     ...vBarOptions,
     xaxis: { categories: labels },
     colors: color ? [color] : undefined,
+    title: {
+      text: title,
+      align: "left",
+    },
   };
 
   return (

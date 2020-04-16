@@ -198,12 +198,12 @@ export const lineOptions = {
       {
         x: new Date("20 Mar 2020").getTime(),
         strokeDashArray: 0,
-        borderColor: "#82DA66",
+        borderColor: "#5BDD20",
         label: {
-          borderColor: "#82DA66",
+          borderColor: "#5BDD20",
           style: {
-            color: "#fff",
-            background: "#82DA66",
+            color: "#000",
+            background: "#5BDD20",
           },
           text: "Inicio de cuarentena",
         },
@@ -211,14 +211,14 @@ export const lineOptions = {
       {
         x: new Date("31 Mar 2020").getTime(),
         strokeDashArray: 0,
-        borderColor: "#775DD0",
+        borderColor: "#5BDD20",
         label: {
-          borderColor: "#775DD0",
+          borderColor: "#5BDD20",
           style: {
-            color: "#fff",
-            background: "#775DD0",
+            color: "#000",
+            background: "#5BDD20",
           },
-          text: "Acá creiste que terminaba",
+          text: "Acá creiste que se terminaba",
         },
       },
       // {

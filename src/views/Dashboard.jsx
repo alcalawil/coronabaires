@@ -52,12 +52,10 @@ const Dashboard = () => {
   const { total_infections, total_deaths, new_cases, new_deaths } =
     dailyStats[date] || {};
 
-  const dataCurve = getDataCurve(dailyStats);
-  const dataBar = getDataBar(dailyStats);
   const dataHbar = getHBarData(dailyStats[date]);
   const dataVBar = formatVBarData(dailyStats);
   const lineData = formatLineData(dailyStats);
-
+  const mortalityRate = ((total_deaths / total_infections) * 100).toFixed(2);
   return (
     <div className="content">
       <Grid fluid>
@@ -69,6 +67,7 @@ const Dashboard = () => {
               new_cases={new_cases}
               new_deaths={new_deaths}
               date={date}
+              mortalityRate={`${mortalityRate}%`}
             />
           ) : (
             <h4>Lo sentimos. Esta data aún no está disponoble</h4>
@@ -83,7 +82,7 @@ const Dashboard = () => {
                 data={lineData.data.totalCases}
                 color="#15DAF4"
                 name="Casos"
-                title="Curva de casos acumulados"
+                title="Casos acumulados"
               />
             ) : (
               <h4>Data no disponible</h4>
@@ -96,7 +95,7 @@ const Dashboard = () => {
                 data={lineData.data.totalDeaths}
                 color="#FF0043"
                 name="Muertes"
-                title="Curva de muertes acumuladas"
+                title="Muertes acumuladas"
               />
             ) : (
               <h4>Data no disponible</h4>
@@ -108,6 +107,7 @@ const Dashboard = () => {
             {dataHbar.data.length ? (
               <VBar
                 name="Casos"
+                title="Casos por día"
                 labels={dataVBar.labels}
                 data={dataVBar.series.newCases}
                 color="#15DAF4"
@@ -120,6 +120,7 @@ const Dashboard = () => {
             {dataHbar.data.length ? (
               <VBar
                 name="Muertes"
+                title="Muertes por día"
                 labels={dataVBar.labels}
                 data={dataVBar.series.newDeaths}
                 color="#FF0043"

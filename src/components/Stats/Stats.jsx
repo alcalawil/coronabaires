@@ -7,10 +7,29 @@ export const Stats = ({
   new_deaths,
   total_deaths,
   total_infections,
+  mortalityRate,
   date,
 }) => {
   return (
     <React.Fragment>
+      <Col lg={6} sm={6}>
+        <StatsCard
+          bigIcon={<i className="fa pe-7s-graph1 text-info" />}
+          statsText="Total casos"
+          statsValue={total_infections}
+          statsIcon={<i className="fa fa-refresh" />}
+          statsIconText={`Hasta el ${date}`} // FIXME: Usar la ultima fecha disponible
+        />
+      </Col>
+      <Col lg={6} sm={6}>
+        <StatsCard
+          bigIcon={<i className="fa pe-7s-graph1 text-danger" />}
+          statsText="Total muertes"
+          statsValue={total_deaths}
+          statsIcon={<i className="fa fa-refresh" />}
+          statsIconText={`Hasta el ${date}`}
+        />
+      </Col>
       <Col lg={3} sm={6}>
         <StatsCard
           bigIcon={<i className="pe-7s-add-user text-info" />}
@@ -31,18 +50,18 @@ export const Stats = ({
       </Col>
       <Col lg={3} sm={6}>
         <StatsCard
-          bigIcon={<i className="fa pe-7s-graph1 text-info" />}
-          statsText="Total casos"
-          statsValue={total_infections}
+          bigIcon={<i className="fa pe-7s-info text-info" />}
+          statsText="Primer caso"
+          statsValue="3 Marzo"
           statsIcon={<i className="fa fa-refresh" />}
-          statsIconText={`Hasta el ${date}`} // FIXME: Usar la ultima fecha disponible
+          statsIconText={`Hasta el ${date}`}
         />
       </Col>
       <Col lg={3} sm={6}>
         <StatsCard
-          bigIcon={<i className="fa pe-7s-graph1 text-danger" />}
-          statsText="Total muertes"
-          statsValue={total_deaths}
+          bigIcon={<i className="fa pe-7s-calculator text-danger" />}
+          statsText="Mortalidad"
+          statsValue={mortalityRate}
           statsIcon={<i className="fa fa-refresh" />}
           statsIconText={`Hasta el ${date}`}
         />
