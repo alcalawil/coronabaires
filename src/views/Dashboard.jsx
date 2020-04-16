@@ -72,6 +72,7 @@ const Dashboard = () => {
               <h4>Lo sentimos. Esta data aún no está disponoble</h4>
             )}
           </Row>
+          <hr />
           {/* Charts */}
           <Row>
             <Col md={6}>
@@ -93,6 +94,7 @@ const Dashboard = () => {
               />
             </Col>
           </Row>
+          <hr />
           <Row>
             <Col md={6}>
               <VBar
@@ -113,6 +115,7 @@ const Dashboard = () => {
               />
             </Col>
           </Row>
+          <hr />
           <Row>
             <Col md={9}>
               {/* <Bar legend={createLegend(legendBar)} data={dataBar} /> */}
