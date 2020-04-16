@@ -126,7 +126,13 @@ const Dashboard = () => {
               <HBar data={dataHbar.data} labels={dataHbar.labels} />
             </Col>
           </Row>
-          <Row></Row>
+          <hr />
+          <Row>
+            <h3>
+              Algunas secciones siguen en construcción y estarán listas en los
+              próximos días
+            </h3>
+          </Row>
         </Grid>
       ) : (
         <Loading />
