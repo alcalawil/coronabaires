@@ -4,14 +4,11 @@ import moment from "moment";
 import axios from "axios";
 // Components
 import { Stats } from "components/Stats/Stats";
-import { Curve } from "components/Charts/Curve";
-import { Bar } from "components/Charts/Bar";
-import { legendCurve, legendBar } from "variables/Variables";
 import DatePicker from "components/DatePicker/DatePicker";
-import { getDataBar, getDataCurve } from "../util";
 import HBar from "components/Charts/HBar";
 import VBar from "components/Charts/VBar";
 import LineChart from "components/Charts/Line";
+import Loading from "components/Loading/Loading";
 import {
   getHBarData,
   formatVBarData,
@@ -22,7 +19,7 @@ const DATE_FORMAT = "YYYY-MM-DD";
 
 const Dashboard = () => {
   const [dailyStats, setDailyStats] = useState({});
-
+  const [loaded, setLoaded] = useState(false);
   const minDate = "2020-03-03";
   const maxDate = moment().format(DATE_FORMAT); // TODO: improve this
   const [date, setDate] = useState(
@@ -36,6 +33,7 @@ const Dashboard = () => {
       );
 
       setDailyStats(response.data || {});
+      setLoaded(true);
     } catch (err) {
       console.log(err.message);
     }
@@ -58,25 +56,25 @@ const Dashboard = () => {
   const mortalityRate = ((total_deaths / total_infections) * 100).toFixed(2);
   return (
     <div className="content">
-      <Grid fluid>
-        <Row>
-          {dailyStats[date] ? (
-            <Stats
-              total_infections={total_infections}
-              total_deaths={total_deaths}
-              new_cases={new_cases}
-              new_deaths={new_deaths}
-              date={date}
-              mortalityRate={`${mortalityRate}%`}
-            />
-          ) : (
-            <h4>Lo sentimos. Esta data aún no está disponoble</h4>
-          )}
-        </Row>
-        {/* Charts */}
-        <Row>
-          <Col md={6}>
-            {dataHbar.data.length ? (
+      {loaded ? (
+        <Grid fluid>
+          <Row>
+            {dailyStats[date] ? (
+              <Stats
+                total_infections={total_infections}
+                total_deaths={total_deaths}
+                new_cases={new_cases}
+                new_deaths={new_deaths}
+                date={date}
+                mortalityRate={`${mortalityRate}%`}
+              />
+            ) : (
+              <h4>Lo sentimos. Esta data aún no está disponoble</h4>
+            )}
+          </Row>
+          {/* Charts */}
+          <Row>
+            <Col md={6}>
               <LineChart
                 labels={lineData.labels}
                 data={lineData.data.totalCases}
@@ -84,12 +82,8 @@ const Dashboard = () => {
                 name="Casos"
                 title="Casos acumulados"
               />
-            ) : (
-              <h4>Data no disponible</h4>
-            )}
-          </Col>
-          <Col md={6}>
-            {dataHbar.data.length ? (
+            </Col>
+            <Col md={6}>
               <LineChart
                 labels={lineData.labels}
                 data={lineData.data.totalDeaths}
@@ -97,14 +91,10 @@ const Dashboard = () => {
                 name="Muertes"
                 title="Muertes acumuladas"
               />
-            ) : (
-              <h4>Data no disponible</h4>
-            )}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6}>
-            {dataHbar.data.length ? (
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6}>
               <VBar
                 name="Casos"
                 title="Casos por día"
@@ -112,12 +102,8 @@ const Dashboard = () => {
                 data={dataVBar.series.newCases}
                 color="#15DAF4"
               />
-            ) : (
-              <h4>Data no disponible</h4>
-            )}
-          </Col>
-          <Col md={6}>
-            {dataHbar.data.length ? (
+            </Col>
+            <Col md={6}>
               <VBar
                 name="Muertes"
                 title="Muertes por día"
@@ -125,27 +111,23 @@ const Dashboard = () => {
                 data={dataVBar.series.newDeaths}
                 color="#FF0043"
               />
-            ) : (
-              <h4>Data no disponible</h4>
-            )}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={9}>
-            {/* <Bar legend={createLegend(legendBar)} data={dataBar} /> */}
-          </Col>
-        </Row>
-        <Row>
-          <Col md={9}>
-            {dataHbar.data.length ? (
+            </Col>
+          </Row>
+          <Row>
+            <Col md={9}>
+              {/* <Bar legend={createLegend(legendBar)} data={dataBar} /> */}
+            </Col>
+          </Row>
+          <Row>
+            <Col md={9}>
               <HBar data={dataHbar.data} labels={dataHbar.labels} />
-            ) : (
-              <h4>Data no disponible</h4>
-            )}
-          </Col>
-        </Row>
-        <Row></Row>
-      </Grid>
+            </Col>
+          </Row>
+          <Row></Row>
+        </Grid>
+      ) : (
+        <Loading />
+      )}
       <DatePicker
         onChange={onDatePickerChange}
         minDate={minDate}
@@ -157,14 +139,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-
-const createLegend = (json) => {
-  var legend = [];
-  for (var i = 0; i < json["names"].length; i++) {
-    var type = "fa fa-circle text-" + json["types"][i];
-    legend.push(<i className={type} key={i} />);
-    legend.push(" ");
-    legend.push(json["names"][i]);
-  }
-  return legend;
-};
