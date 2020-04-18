@@ -118,11 +118,6 @@ const Dashboard = () => {
           <hr />
           <Row>
             <Col md={9}>
-              {/* <Bar legend={createLegend(legendBar)} data={dataBar} /> */}
-            </Col>
-          </Row>
-          <Row>
-            <Col md={9}>
               <HBar data={dataHbar.data} labels={dataHbar.labels} />
             </Col>
           </Row>
